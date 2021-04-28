@@ -1,0 +1,17 @@
+/.bundle/
+/.byebug_history
+/.idea/
+/.rspec_status
+/.rubocop-*
+/.ruby-gemset
+/.ruby-version
+/.yardoc
+/_yardoc/
+/config/database.yml
+/coverage/
+/doc/
+/Gemfile.lock
+/log/
+/pkg/
+/tmp/
+
