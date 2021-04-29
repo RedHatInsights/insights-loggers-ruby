@@ -20,7 +20,11 @@ module Insights
                  else
                    klass.new
                  end
-        logger.app_name_for_formatter(args[:app_name]) if args && args[:app_name]
+
+        if args && args[:app_name] && logger.respond_to?(:app_name_for_formatter)
+          logger.app_name_for_formatter(args[:app_name])
+        endgs
+
         logger
       end
 
