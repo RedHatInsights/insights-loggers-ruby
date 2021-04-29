@@ -35,6 +35,7 @@ module Insights
           require "manageiq/loggers/container"
         when "ManageIQ::Loggers::CloudWatch"
           require "manageiq/loggers/base"
+          require "manageiq/loggers/container"
           require "manageiq/loggers/cloud_watch"
         when "ManageIQ::Loggers::Journald"
           unless RbConfig::CONFIG['host_os'] =~ /linux/i
