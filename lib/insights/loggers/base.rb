@@ -1,5 +1,3 @@
-require 'pry-nav'
-
 module Insights
   module Loggers
     class Base
