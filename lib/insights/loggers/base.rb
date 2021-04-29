@@ -23,7 +23,7 @@ module Insights
 
         if args && args[:app_name] && logger.respond_to?(:app_name_for_formatter)
           logger.app_name_for_formatter(args[:app_name])
-        endgs
+        end
 
         logger
       end
