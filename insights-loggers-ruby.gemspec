@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency "activesupport", "~> 5.0"
-  spec.add_runtime_dependency "topological_inventory-providers-common", "~> 2.1.5"
+  spec.add_runtime_dependency "topological_inventory-providers-common", "~> 3.0.1"
   spec.add_runtime_dependency "manageiq-loggers", "~> 0.4", ">= 0.4.2"
 
   spec.add_runtime_dependency "cloudwatchlogger", "~> 0.3.0"
