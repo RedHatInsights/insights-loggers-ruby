@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "activesupport", "~> 5.0"
+  spec.add_runtime_dependency "activesupport", "~> 5.2", ">= 5.2.4.3"
   spec.add_runtime_dependency "topological_inventory-providers-common", "~> 3.0.1"
   spec.add_runtime_dependency "manageiq-loggers", "~> 0.4", ">= 0.4.2"
 
