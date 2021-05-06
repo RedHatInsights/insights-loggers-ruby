@@ -26,14 +26,14 @@ Or install it yourself as:
 ```ruby
 require 'insights/loggers'
 logger_class = "Insights::Loggers::LoggingService"
-logger = Insights::Loggers::Base.create_logger(logger_class)
+logger = Insights::Loggers::Factory.create_logger(logger_class)
 logger.class #=> Insights::Loggers::LoggingService
 logger.info("test")
 #{"@timestamp":"2021-04-28T12:56:28.682015 ","pid":11561,"tid":"3fd1d4c2ffd4","level":"info","message":"test","tags":["insights_application"],"labels":{"app":"insights_application"}}
 #^^^standard error output (it is not return value)
 #=> true
 #
-logger = Insights::Loggers::Base.create_logger(logger_class, {:app_name => "MyApp"})
+logger = Insights::Loggers::Factory.create_logger(logger_class, {:app_name => "MyApp"})
 logger.warn("test")
 #{"@timestamp":"2021-04-28T13:31:40.311131 ","pid":11561,"tid":"3fd1d4c2ffd4","level":"warning","message":"test","tags":["MyApp"],"labels":{"app":"MyApp"}}
 #^^^standard error output
@@ -61,7 +61,7 @@ This standard error output can be consumed by [haberdasher](https://github.com/R
 Logger object can be built with method:
 
 ```
-Insights::Loggers::Base.create_logger
+Insights::Loggers::Factory.create_logger
 ```
 First parameter is `logger_class` and second parameter is
 hash with parameters.

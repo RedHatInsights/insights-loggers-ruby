@@ -1,6 +1,6 @@
 module Insights
   module Loggers
-    class Base
+    class Factory
       def self.create_logger(logger_class, args = nil)
         logger_library_loader(logger_class)
         klass = logger_class.safe_constantize

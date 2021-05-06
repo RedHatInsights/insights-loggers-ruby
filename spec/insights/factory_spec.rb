@@ -1,7 +1,7 @@
 require 'cloudwatchlogger'
-require 'insights/loggers/base'
+require 'insights/loggers/factory'
 
-describe Insights::Loggers::Base do
+describe Insights::Loggers::Factory do
   before do
     ENV["CW_AWS_ACCESS_KEY_ID"] = "test"
     ENV["CW_AWS_SECRET_ACCESS_KEY"] = "test"
