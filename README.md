@@ -25,9 +25,9 @@ Or install it yourself as:
 ### Example
 ```ruby
 require 'insights/loggers'
-logger_class = "Insights::Loggers::LoggingService"
+logger_class = "Insights::Loggers::StdErrorLogger"
 logger = Insights::Loggers::Factory.create_logger(logger_class)
-logger.class #=> Insights::Loggers::LoggingService
+logger.class #=> Insights::Loggers::StdErrorLogger
 logger.info("test")
 #{"@timestamp":"2021-04-28T12:56:28.682015 ","pid":11561,"tid":"3fd1d4c2ffd4","level":"info","message":"test","tags":["insights_application"],"labels":{"app":"insights_application"}}
 #^^^standard error output (it is not return value)
@@ -45,14 +45,14 @@ ManageIQ::Loggers::Base
 ManageIQ::Loggers::Container
 ManageIQ::Loggers::CloudWatch
 ManageIQ::Loggers::Journald
-Insights::Loggers::LoggingService
+Insights::Loggers::StdErrorLogger
 TopologicalInventory::Providers::Common::Logger
 ```
 
 First for refers to gem `manageiq-loggers` and
 last one refers to `topological_inventory-providers-common` gem.
 
-`insights-loggers-ruby` adds own logger `Insights::Loggers::LoggingService`
+`insights-loggers-ruby` adds own logger `Insights::Loggers::StdErrorLogger`
 which is producing log to standard error output.
 This standard error output can be consumed by [haberdasher](https://github.com/RedHatInsights/haberdasher) tool.
 
@@ -68,11 +68,11 @@ hash with parameters.
 Supported hash parameters are:
 
 - `:log_path` - required for `ManageIQ::Loggers::Base` logger, it specifies the path to log file
-- `:app_name` - applicable for `Insights::Loggers::LoggingService`, it specifies the tags and labels values in formatted output
+- `:app_name` - applicable for `Insights::Loggers::StdErrorLogger`, it specifies the tags and labels values in formatted output
 
-### Formatted output for `Insights::Loggers::LoggingService` logger
+### Formatted output for `Insights::Loggers::StdErrorLogger` logger
 
-Logging service produces formatted output:
+Standard error logger produces formatted output:
 
 ```
 {"@timestamp":"2021-04-28T13:31:40.311131 ",
@@ -91,7 +91,7 @@ when app_name is not set in hash parameters.
 
 ## Dependencies
 
-Logging service inherits from `ManageIQ::Loggers::Container` class and
+Standard error logger inherits from `ManageIQ::Loggers::Container` class and
 thanks to that `manageiq-loggers` is required dependency.
 
 Usage other loggers is possible also from `manageiq-loggers` gem.

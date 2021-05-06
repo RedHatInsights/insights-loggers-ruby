@@ -44,10 +44,10 @@ module Insights
 
           require "manageiq/loggers/base"
           require "manageiq/loggers/journald"
-        when "Insights::Loggers::LoggingService"
+        when "Insights::Loggers::StdErrorLogger"
           require "manageiq/loggers/base"
           require "manageiq/loggers/container"
-          require "insights/loggers/logging_service"
+          require "insights/loggers/std_error_logger"
         when "TopologicalInventory::Providers::Common::Logger"
           require "topological_inventory/providers/common/logging"
         else

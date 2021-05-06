@@ -1,6 +1,6 @@
 module Insights
   module Loggers
-    class LoggingService < ManageIQ::Loggers::Container
+    class StdErrorLogger < ManageIQ::Loggers::Container
       def initialize(*args)
         super
         self.reopen(STDERR)

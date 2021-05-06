@@ -1,9 +1,9 @@
 require 'manageiq/loggers/base'
 require 'manageiq/loggers/container'
-require 'insights/loggers/logging_service'
+require 'insights/loggers/std_error_logger'
 require 'timecop'
 
-describe Insights::Loggers::LoggingService do
+describe Insights::Loggers::StdErrorLogger do
   let(:log_message) { "some message" }
   let(:time)        { Time.now }
 
