@@ -35,5 +35,11 @@ describe Insights::Loggers::Factory do
         end
       end
     end
+
+    it "loads logging methods from extended module" do
+      logger_class = "Insights::Loggers::StdErrorLogger"
+      logger = Insights::Loggers::Factory.create_logger(logger_class, :extend_module => "TopologicalInventory::Providers::Common::LoggingFunctions")
+      expect(logger).to respond_to(:availability_check)
+    end
   end
 end

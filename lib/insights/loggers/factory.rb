@@ -2,7 +2,7 @@ module Insights
   module Loggers
     class Factory
       def self.create_logger(logger_class, args = nil)
-        logger_library_loader(logger_class)
+        logger_library_loader(logger_class, args)
         klass = logger_class.safe_constantize
 
         if klass
@@ -23,10 +23,18 @@ module Insights
           logger.app_name_for_formatter(args[:app_name])
         end
 
+        if args && args[:extend_module]
+          logger.extend(args[:extend_module].safe_constantize)
+        end
+
         logger
       end
 
-      private_class_method def self.logger_library_loader(logger_class)
+      EXTENDED_LIBRARY_FROM_MODULE = {
+        "TopologicalInventory::Providers::Common::LoggingFunctions" => "topological_inventory/providers/common/logging"
+      }.freeze
+
+      private_class_method def self.logger_library_loader(logger_class, args = nil)
         case logger_class
         when "ManageIQ::Loggers::Base"
           require "manageiq/loggers/base"
@@ -48,6 +56,12 @@ module Insights
           require "manageiq/loggers/base"
           require "manageiq/loggers/container"
           require "insights/loggers/std_error_logger"
+          if args && args[:extend_module]
+            library_path = EXTENDED_LIBRARY_FROM_MODULE[args[:extend_module]]
+            raise ArgumentError, "Unable to find library for #{args[:extend_module]}" unless library_path
+
+            require EXTENDED_LIBRARY_FROM_MODULE[args[:extend_module]]
+          end
         when "TopologicalInventory::Providers::Common::Logger"
           require "topological_inventory/providers/common/logging"
         else
