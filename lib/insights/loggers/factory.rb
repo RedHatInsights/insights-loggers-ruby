@@ -63,6 +63,11 @@ module Insights
 
             require EXTENDED_LIBRARY_FROM_MODULE[args[:extend_module]]
           end
+        when "Insights::Loggers::CloudWatch"
+          require "manageiq/loggers/base"
+          require "manageiq/loggers/container"
+          require "insights/loggers/container"
+          require "insights/loggers/cloud_watch"
         when "TopologicalInventory::Providers::Common::Logger"
           require "topological_inventory/providers/common/logging"
         when "Insights::Loggers::Container"
