@@ -17,6 +17,7 @@ describe Insights::Loggers::Factory do
       ManageIQ::Loggers::CloudWatch
       ManageIQ::Loggers::Journald
       Insights::Loggers::StdErrorLogger
+      Insights::Loggers::Container
       TopologicalInventory::Providers::Common::Logger
     ].freeze
 

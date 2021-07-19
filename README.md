@@ -45,6 +45,7 @@ ManageIQ::Loggers::Base
 ManageIQ::Loggers::Container
 ManageIQ::Loggers::CloudWatch
 ManageIQ::Loggers::Journald
+Insights::Loggers::Container
 Insights::Loggers::StdErrorLogger
 TopologicalInventory::Providers::Common::Logger
 ```

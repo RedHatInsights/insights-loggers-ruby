@@ -64,6 +64,10 @@ module Insights
           end
         when "TopologicalInventory::Providers::Common::Logger"
           require "topological_inventory/providers/common/logging"
+        when "Insights::Loggers::Container"
+          require "manageiq/loggers/base"
+          require "manageiq/loggers/container"
+          require "insights/loggers/container"
         else
           raise ArgumentError, "Can't load libraries for #{logger_class}."
         end
