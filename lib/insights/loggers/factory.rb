@@ -55,6 +55,7 @@ module Insights
         when "Insights::Loggers::StdErrorLogger"
           require "manageiq/loggers/base"
           require "manageiq/loggers/container"
+          require "insights/loggers/container"
           require "insights/loggers/std_error_logger"
           if args && args[:extend_module]
             library_path = EXTENDED_LIBRARY_FROM_MODULE[args[:extend_module]]
