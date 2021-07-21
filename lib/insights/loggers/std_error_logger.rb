@@ -1,10 +1,11 @@
 module Insights
   module Loggers
-    class StdErrorLogger < ManageIQ::Loggers::Container
+    class StdErrorLogger < Container
       def initialize(*args)
         super
         self.reopen(STDERR)
         self.formatter = Formatter.new
+        self.level = INFO
       end
 
       def app_name_for_formatter(app_name)

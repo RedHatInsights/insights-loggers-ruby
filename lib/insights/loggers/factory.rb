@@ -55,6 +55,7 @@ module Insights
         when "Insights::Loggers::StdErrorLogger"
           require "manageiq/loggers/base"
           require "manageiq/loggers/container"
+          require "insights/loggers/container"
           require "insights/loggers/std_error_logger"
           if args && args[:extend_module]
             library_path = EXTENDED_LIBRARY_FROM_MODULE[args[:extend_module]]
@@ -62,8 +63,17 @@ module Insights
 
             require EXTENDED_LIBRARY_FROM_MODULE[args[:extend_module]]
           end
+        when "Insights::Loggers::CloudWatch"
+          require "manageiq/loggers/base"
+          require "manageiq/loggers/container"
+          require "insights/loggers/container"
+          require "insights/loggers/cloud_watch"
         when "TopologicalInventory::Providers::Common::Logger"
           require "topological_inventory/providers/common/logging"
+        when "Insights::Loggers::Container"
+          require "manageiq/loggers/base"
+          require "manageiq/loggers/container"
+          require "insights/loggers/container"
         else
           raise ArgumentError, "Can't load libraries for #{logger_class}."
         end

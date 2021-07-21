@@ -1,5 +1,6 @@
 require 'manageiq/loggers/base'
 require 'manageiq/loggers/container'
+require 'insights/loggers/container'
 require 'insights/loggers/std_error_logger'
 require 'timecop'
 

@@ -45,6 +45,7 @@ ManageIQ::Loggers::Base
 ManageIQ::Loggers::Container
 ManageIQ::Loggers::CloudWatch
 ManageIQ::Loggers::Journald
+Insights::Loggers::Container
 Insights::Loggers::StdErrorLogger
 TopologicalInventory::Providers::Common::Logger
 ```
@@ -80,7 +81,7 @@ Standard error logger produces formatted output:
  "pid":11561, # process id
  "tid":"3fd1d4c2ffd4", # thread id
  "service": "progname",
- "level":"warning", #info, warning, error, debug
+ "level":"warning", # info(default), warning, error, debug
  "message":"test",
  "request_id": "REQ_ID", # Thread.current[:request_id]
  "tags":["MyApp"],
