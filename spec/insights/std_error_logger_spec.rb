@@ -32,13 +32,21 @@ describe Insights::Loggers::StdErrorLogger do
     let(:request_id) { "123" }
 
     context "in :request_id" do
-      before { Thread.current[:request_id] = request_id }
-      after  { Thread.current[:request_id] = nil }
+      let(:request) { double(:request_id => request_id) }
+
+      before do
+        Thread.current[:current_request] = request
+      end
+
+      after do
+        Thread.current[:current_request] = nil
+      end
 
       it "logs a message" do
         time_formatted = time.strftime("%Y-%m-%dT%H:%M:%S.%6N ".freeze)
         logger = described_class.new
-        expected_output  = JSON.generate(expected_hash(time_formatted, log_message, request_id)) << "\n"
+
+        expected_output = JSON.generate(expected_hash(time_formatted, log_message, request_id)) << "\n"
         expect { logger.info(log_message) }.to output(expected_output).to_stderr_from_any_process
       end
     end
