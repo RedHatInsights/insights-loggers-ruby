@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "activesupport", "~> 5.2", ">= 5.2.4.3"
 
-  spec.add_runtime_dependency "manageiq-loggers", "~> 0.4", ">= 0.4.2"
+  spec.add_runtime_dependency "manageiq-loggers", "~> 0.4.0", ">= 0.4.2"
 
   spec.add_runtime_dependency "cloudwatchlogger", "~> 0.2.1"
 
